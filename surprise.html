@@ -1,0 +1,165 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine's Day Snothando ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+}
+
+.card {
+    background: rgba(255,255,255,0.2);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 520px;
+}
+
+h1 {
+    font-size: 1.9em;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+.heart {
+    font-size: 35px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+/* Slideshow */
+.slideshow {
+    width: 100%;
+    height: 320px;
+    margin: 15px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background: black;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.slide img,
+.slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #ff4b5c;
+    color: white;
+    cursor: pointer;
+}
+
+.hidden-message {
+    display: none;
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+    <source src="take-you-there.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <div class="heart">❤️</div>
+
+    <h1>Happy Valentine's Day<br>Snothando Ngobese</h1>
+
+    <p>
+            My dearest Lover,<br><br>
+            Distance may keep us apart, but nothing can change how much you mean to me.
+            You are my happiness, my peace, and my heart every single day.
+			A person I see myself rising our children in a loving home growing old together
+			I LOVE YOU ALWAYS AND FOREVER HAPPY VALENTINES DAY
+        
+    </p>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <div class="slide"><img src="photo1.jpg"></div>
+        <div class="slide"><img src="photo2.jpg"></div>
+        <div class="slide"><img src="photo3.jpg"></div>
+        <div class="slide"><video src="video1.mp4" muted></video></div>
+        <div class="slide"><video src="video2.mp4" muted></video></div>
+    </div>
+
+    <button onclick="showMessage()">Click for a surprise</button>
+    <button onclick="playMusic()">Play Music</button>
+
+    <div class="hidden-message" id="message">
+        I love you more than words can express.  
+        Forever yours, Your Cocomelon❤️
+    </div>
+</div>
+
+<script>
+let slideIndex = 0;
+const slides = document.getElementsByClassName("slide");
+
+function showSlides() {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        const video = slides[i].querySelector("video");
+        if (video) video.pause(); 
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+
+    slides[slideIndex - 1].style.display = "block";
+
+    const activeVideo = slides[slideIndex - 1].querySelector("video");
+    if (activeVideo) activeVideo.play();
+
+    setTimeout(showSlides, 4000);
+}
+
+showSlides();
+
+function showMessage() {
+    document.getElementById("message").style.display = "block";
+}
+
+function playMusic() {
+    var music = document.getElementById("bgMusic");
+	music.play();
+}
+</script>
+
+</body>
+</html>
+```
